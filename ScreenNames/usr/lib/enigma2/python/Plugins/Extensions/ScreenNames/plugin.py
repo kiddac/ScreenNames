@@ -32,7 +32,7 @@ def Plugins(path, **kwargs):
     descr = _("Show Skin Screen Names")
     list = [PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=sessionAutostart), ]
     if config.plugins.ScreenNames.where.value == "0":
-        list.append(PluginDescriptor(name=name, description=descr, where=PluginDescriptor.WHERE_PLUGINMENU, needsRestart=True, icon='plugin.png', fnc=main))
+        list.append(PluginDescriptor(name=name, description=descr, where=PluginDescriptor.WHERE_PLUGINMENU, needsRestart=True, fnc=main))
     elif config.plugins.ScreenNames.where.value == "1":
         list.append(PluginDescriptor(name=name, description=descr, where=PluginDescriptor.WHERE_MENU, needsRestart=True, fnc=startSetup))
     elif config.plugins.ScreenNames.where.value == "2":

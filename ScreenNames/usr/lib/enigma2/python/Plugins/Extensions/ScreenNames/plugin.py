@@ -2,12 +2,14 @@
 from . import _
 
 from Plugins.Plugin import PluginDescriptor
-from Components.config import ConfigSubsection, config, ConfigSelection
+from Components.config import ConfigSubsection, config, ConfigSelection, ConfigYesNo
 
-VERSION = "1.02"
+VERSION = "1.05"
 
 config.plugins.ScreenNames = ConfigSubsection()
-config.plugins.ScreenNames.where = ConfigSelection(default="0", choices=[("0", _("plugins")), ("1", _("menu-system")), ("2", _("extensions"))])
+cfg = config.plugins.ScreenNames
+cfg.enable = ConfigYesNo(default=False)
+cfg.where = ConfigSelection(default="0", choices=[("0", _("plugins")), ("1", _("menu-system")), ("2", _("extensions"))])
 
 
 def startSetup(menuid, **kwargs):

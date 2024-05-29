@@ -1,0 +1,59 @@
+# Signed-off-by: Dario Croci <spaeleus@croci.org>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ScreenNames v1.03\n"
+"POT-Creation-Date: 2024-03-23 22:33+0000\n"
+"PO-Revision-Date: 2024-03-23 22:34+0000\n"
+"Last-Translator: Dario Croci <spaeleus@croci.org>\n"
+"Language-Team: Dario Croci <spaeleus@croci.org>\n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-Basepath: ../../../../../../../../..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: lib/enigma2/python/Plugins/Extensions/ScreenNames/plugin.py:12
+msgid "plugins"
+msgstr "Plugin"
+
+#: lib/enigma2/python/Plugins/Extensions/ScreenNames/plugin.py:12
+msgid "menu-system"
+msgstr "Menu - Sistema"
+
+#: lib/enigma2/python/Plugins/Extensions/ScreenNames/plugin.py:12
+msgid "extensions"
+msgstr "Estensioni"
+
+#: lib/enigma2/python/Plugins/Extensions/ScreenNames/plugin.py:18
+#: lib/enigma2/python/Plugins/Extensions/ScreenNames/ui.py:42
+#: lib/enigma2/python/Plugins/Extensions/ScreenNames/ui.py:61
+msgid "Setup ScreenNames"
+msgstr "Impostazioni ScreenNames"
+
+#: lib/enigma2/python/Plugins/Extensions/ScreenNames/plugin.py:34
+msgid "Show Skin Screen Names"
+msgstr "Mostrare nomi schermate skin"
+
+#: lib/enigma2/python/Plugins/Extensions/ScreenNames/ui.py:55
+msgid "Save"
+msgstr "Salvare"
+
+#: lib/enigma2/python/Plugins/Extensions/ScreenNames/ui.py:56
+msgid "Cancel"
+msgstr "Annullare"
+
+#: lib/enigma2/python/Plugins/Extensions/ScreenNames/ui.py:64
+msgid "Enable ScreenNames"
+msgstr "Abilitare ScreenNames"
+
+#: lib/enigma2/python/Plugins/Extensions/ScreenNames/ui.py:65
+msgid "Display plugin in"
+msgstr "Mostrare il plugin in"
+
+#: lib/enigma2/python/Plugins/Extensions/ScreenNames/ui.py:87
+msgid "Really close without saving settings?"
+msgstr "Chiudere senza salvare le impostazioni?"

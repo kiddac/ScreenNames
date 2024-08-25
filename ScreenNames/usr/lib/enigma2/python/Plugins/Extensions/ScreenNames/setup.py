@@ -12,25 +12,44 @@ from Screens import Standby
 from .plugin import VERSION, cfg
 from . import _
 
+import os
 
 screenwidth = getDesktop(0).size()
+isDreambox = os.path.exists("/usr/bin/apt-get")
 
 
 class ScreenNamesSetupMenu(Screen, ConfigListScreen):
-    if screenwidth.width() > 1280:
-        skin = """
-    <screen name="ScreenNames" position="center,center" size="600,315" title="" backgroundColor="000000" >
-        <widget name="config" position="10,10" size="580,200" zPosition="1" font="Regular;24" secondfont="Regular;24" transparent="0" backgroundColor="#000000" scrollbarMode="showOnDemand" itemHeight="36" valign="center"/>
-        <widget name="key_red" position="0,287" zPosition="2" size="120,30" valign="center" halign="center" font="Regular;24" transparent="1" foregroundColor="#ff0011" />
-        <widget name="key_green" position="120,287" zPosition="2" size="120,30" valign="center" halign="center" font="Regular;24" transparent="1" foregroundColor="#307e13" />
-    </screen>"""
+
+    if not isDreambox:
+        if screenwidth.width() > 1280:
+            skin = """
+        <screen name="ScreenNames" position="center,center" size="600,315" title="" backgroundColor="000000" >
+            <widget name="config" position="10,10" size="580,200" zPosition="1" font="Regular;24" secondfont="Regular;24" transparent="0" backgroundColor="#000000" scrollbarMode="showOnDemand" itemHeight="36" valign="center"/>
+            <widget name="key_red" position="0,287" zPosition="2" size="120,30" valign="center" halign="center" font="Regular;24" transparent="1" foregroundColor="#ff0011" />
+            <widget name="key_green" position="120,287" zPosition="2" size="120,30" valign="center" halign="center" font="Regular;24" transparent="1" foregroundColor="#307e13" />
+        </screen>"""
+        else:
+            skin = """
+        <screen name="ScreenNames" position="center,center" size="500,315" title="" backgroundColor="#000000" >
+            <widget name="config" position="10,10" size="480,200" zPosition="1" transparent="0" backgroundColor="#000000" font="Regular;16" secondfont="Regular;16" scrollbarMode="showOnDemand" itemHeight="24" valign="center"/>
+            <widget name="key_red" position="0,287" zPosition="2" size="120,30" valign="center" halign="center" font="Regular;16" transparent="1" foregroundColor="#ff0011" />
+            <widget name="key_green" position="120,287" zPosition="2" size="120,30" valign="center" halign="center" font="Regular;16" transparent="1" foregroundColor="#307e13" />
+        </screen>"""
     else:
-        skin = """
-    <screen name="ScreenNames" position="center,center" size="500,315" title="" backgroundColor="#000000" >
-        <widget name="config" position="10,10" size="480,200" zPosition="1" transparent="0" backgroundColor="#000000" font="Regular;16" secondfont="Regular;16" scrollbarMode="showOnDemand" itemHeight="24" valign="center"/>
-        <widget name="key_red" position="0,287" zPosition="2" size="120,30" valign="center" halign="center" font="Regular;16" transparent="1" foregroundColor="#ff0011" />
-        <widget name="key_green" position="120,287" zPosition="2" size="120,30" valign="center" halign="center" font="Regular;16" transparent="1" foregroundColor="#307e13" />
-    </screen>"""
+        if screenwidth.width() > 1280:
+            skin = """
+        <screen name="ScreenNames" position="center,center" size="600,315" title="" backgroundColor="000000" >
+            <widget name="config" position="10,10" size="580,200" zPosition="1" transparent="0" backgroundColor="#000000" scrollbarMode="showOnDemand" itemHeight="36" valign="center"/>
+            <widget name="key_red" position="0,287" zPosition="2" size="120,30" valign="center" halign="center" font="Regular;24" transparent="1" foregroundColor="#ff0011" />
+            <widget name="key_green" position="120,287" zPosition="2" size="120,30" valign="center" halign="center" font="Regular;24" transparent="1" foregroundColor="#307e13" />
+        </screen>"""
+        else:
+            skin = """
+        <screen name="ScreenNames" position="center,center" size="500,315" title="" backgroundColor="#000000" >
+            <widget name="config" position="10,10" size="480,200" zPosition="1" transparent="0" backgroundColor="#000000" scrollbarMode="showOnDemand" itemHeight="24" valign="center"/>
+            <widget name="key_red" position="0,287" zPosition="2" size="120,30" valign="center" halign="center" font="Regular;16" transparent="1" foregroundColor="#ff0011" />
+            <widget name="key_green" position="120,287" zPosition="2" size="120,30" valign="center" halign="center" font="Regular;16" transparent="1" foregroundColor="#307e13" />
+        </screen>"""
 
     def __init__(self, session):
         Screen.__init__(self, session)

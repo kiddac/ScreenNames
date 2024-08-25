@@ -7,6 +7,7 @@ from Components.config import configfile, getConfigListEntry
 from Components.Label import Label
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
+from Screens import Standby
 
 from .plugin import VERSION, cfg
 from . import _
@@ -18,16 +19,16 @@ screenwidth = getDesktop(0).size()
 class ScreenNamesSetupMenu(Screen, ConfigListScreen):
     if screenwidth.width() > 1280:
         skin = """
-    <screen name="ScreenNames" position="center,center" size="600,315" title="" backgroundColor="#31000000" >
-        <widget name="config" position="10,10" size="580,200" zPosition="1" transparent="0" backgroundColor="#31000000" scrollbarMode="showOnDemand" />
-        <widget name="key_red" position="0,287" zPosition="2" size="120,30" valign="center" halign="center" font="Regular;24" transparent="1" foregroundColor="#00ff0011" />
+    <screen name="ScreenNames" position="center,center" size="600,315" title="" backgroundColor="000000" >
+        <widget name="config" position="10,10" size="580,200" zPosition="1" font="Regular;24" secondfont="Regular;24" transparent="0" backgroundColor="#000000" scrollbarMode="showOnDemand" itemHeight="36" valign="center"/>
+        <widget name="key_red" position="0,287" zPosition="2" size="120,30" valign="center" halign="center" font="Regular;24" transparent="1" foregroundColor="#ff0011" />
         <widget name="key_green" position="120,287" zPosition="2" size="120,30" valign="center" halign="center" font="Regular;24" transparent="1" foregroundColor="#307e13" />
     </screen>"""
     else:
         skin = """
-    <screen name="ScreenNames" position="center,center" size="500,315" title="" backgroundColor="#31000000" >
-        <widget name="config" position="10,10" size="480,200" zPosition="1" transparent="0" backgroundColor="#31000000" scrollbarMode="showOnDemand" />
-        <widget name="key_red" position="0,287" zPosition="2" size="120,30" valign="center" halign="center" font="Regular;16" transparent="1" foregroundColor="#00ff0011" />
+    <screen name="ScreenNames" position="center,center" size="500,315" title="" backgroundColor="#000000" >
+        <widget name="config" position="10,10" size="480,200" zPosition="1" transparent="0" backgroundColor="#000000" font="Regular;16" secondfont="Regular;16" scrollbarMode="showOnDemand" itemHeight="24" valign="center"/>
+        <widget name="key_red" position="0,287" zPosition="2" size="120,30" valign="center" halign="center" font="Regular;16" transparent="1" foregroundColor="#ff0011" />
         <widget name="key_green" position="120,287" zPosition="2" size="120,30" valign="center" halign="center" font="Regular;16" transparent="1" foregroundColor="#307e13" />
     </screen>"""
 
@@ -68,6 +69,7 @@ class ScreenNamesSetupMenu(Screen, ConfigListScreen):
         for x in self["config"].list:
             x[1].save()
         configfile.save()
+        self.changedFinished()
         self.close()
 
     def cancel(self, answer=None):
@@ -85,3 +87,13 @@ class ScreenNamesSetupMenu(Screen, ConfigListScreen):
     def changedEntry(self):
         for x in self.onChangedEntry:
             x()
+
+    def changedFinished(self):
+        self.session.openWithCallback(self.ExecuteRestart, MessageBox, _("You need to restart the GUI") + "\n" + _("Do you want to restart now?"), MessageBox.TYPE_YESNO)
+        self.close()
+
+    def ExecuteRestart(self, result=None):
+        if result:
+            Standby.quitMainloop(3)
+        else:
+            self.close()

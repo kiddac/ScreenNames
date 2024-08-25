@@ -11,9 +11,10 @@ cfg.enable = ConfigYesNo(default=False)
 
 
 def sessionAutostart(reason, **kwargs):
-    if reason == 0:
-        from . import ui
-        ui.ScreenNamesAuto.startScreenNames(kwargs["session"])
+    if reason == 0:  # Only start if the session is being started (not stopped)
+        if cfg.enable.value:  # Check if the plugin is enabled
+            from . import ui
+            ui.ScreenNamesAuto.startScreenNames(kwargs["session"])
 
 
 def main(session, **kwargs):

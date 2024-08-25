@@ -3,7 +3,7 @@ from . import _
 from Plugins.Plugin import PluginDescriptor
 from Components.config import ConfigSubsection, config, ConfigYesNo
 
-VERSION = "1.05"
+VERSION = "1.06"
 
 config.plugins.ScreenNames = ConfigSubsection()
 cfg = config.plugins.ScreenNames
